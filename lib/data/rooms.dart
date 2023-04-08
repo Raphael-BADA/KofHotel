@@ -1,0 +1,161 @@
+import '../models/room.dart';
+import 'categories.dart';
+
+List<Room> roomList = [
+  Room(
+    id: 1,
+    name: 'Room Ax12',
+    price: '15',
+    imagePath: 'assets/rooms/ch2.jpeg',
+    description:
+        'Book your stay today and experience the magic of this one-of-a-kind suite',
+    distance: '1.5 km',
+    rating: 4,
+    reviews: '36',
+    category: CategoryList[0],
+  ),
+  Room(
+    id: 2,
+    name: 'Room By15',
+    price: '9',
+    imagePath: 'assets/rooms/ch3.jpeg',
+    description:
+        'Book your stay today and experience the magic of this one-of-a-kind suite',
+    distance: '1.7 km',
+    rating: 5,
+    reviews: '20',
+    category: CategoryList[1],
+  ),
+  Room(
+    id: 3,
+    name: 'Room Ax17',
+    price: '17',
+    imagePath: 'assets/rooms/ch12.jpeg',
+    description:
+        'Book your stay today and experience the magic of this one-of-a-kind suite',
+    distance: '2.5 km',
+    rating: 3,
+    reviews: '46',
+    category: CategoryList[2],
+  ),
+  Room(
+    id: 4,
+    name: 'Room Tx12',
+    price: '17',
+    imagePath: 'assets/rooms/ch4.jpeg',
+    description:
+        'Book your stay today and experience the magic of this one-of-a-kind suite',
+    distance: '4.5 km',
+    rating: 5,
+    reviews: '12',
+    category: CategoryList[2],
+  ),
+  Room(
+    id: 5,
+    name: 'Room Ax116',
+    price: '19',
+    imagePath: 'assets/rooms/ch5.jpeg',
+    description:
+        'Book your stay today and experience the magic of this one-of-a-kind suite',
+    distance: '1.3 km',
+    rating: 4,
+    reviews: '39',
+    category: CategoryList[0],
+  ),
+  Room(
+    id: 6,
+    name: 'Room Lc32',
+    price: '14',
+    imagePath: 'assets/rooms/ch6.jpeg',
+    description:
+        'Book your stay today and experience the magic of this one-of-a-kind suite',
+    distance: '3.8 km',
+    rating: 3,
+    reviews: '42',
+    category: CategoryList[1],
+  ),
+  Room(
+    id: 7,
+    name: 'Room Bl52',
+    price: '16',
+    imagePath: 'assets/rooms/ch7.jpeg',
+    description:
+        'Book your stay today and experience the magic of this one-of-a-kind suite',
+    distance: '6.1 km',
+    rating: 5,
+    reviews: '28',
+    category: CategoryList[0],
+  ),
+  Room(
+    id: 8,
+    name: 'Room Xl14',
+    price: '11',
+    imagePath: 'assets/rooms/ch8.jpeg',
+    description:
+        'Book your stay today and experience the magic of this one-of-a-kind suite',
+    distance: '2.3 km',
+    rating: 2,
+    reviews: '64',
+    category: CategoryList[2],
+  ),
+  Room(
+    id: 9,
+    name: 'Room Dz33',
+    price: '13',
+    imagePath: 'assets/rooms/ch1.jpeg',
+    description:
+        'Book your stay today and experience the magic of this one-of-a-kind suite',
+    distance: '4.4 km',
+    rating: 4,
+    reviews: '31',
+    category: CategoryList[2],
+  ),
+  Room(
+    id: 10,
+    name: 'Room Bw24',
+    price: '18',
+    imagePath: 'assets/rooms/ch10.jpeg',
+    description:
+        'Book your stay today and experience the magic of this one-of-a-kind suite',
+    distance: '3.5 km',
+    rating: 5,
+    reviews: '23',
+    category: CategoryList[1],
+  ),
+  Room(
+    id: 11,
+    name: 'Room Gh66',
+    price: '13',
+    imagePath: 'assets/rooms/ch11.jpeg',
+    description:
+        'Book your stay today and experience the magic of this one-of-a-kind suite',
+    distance: '2.2 km',
+    rating: 3,
+    reviews: '42',
+    category: CategoryList[1],
+  ),
+  Room(
+    id: 12,
+    name: 'Room As55',
+    price: '18',
+    imagePath: 'assets/rooms/ch12.jpeg',
+    description:
+        'Book your stay today and experience the magic of this one-of-a-kind suite',
+    distance: '1.7 km',
+    rating: 4,
+    reviews: '51',
+    category: CategoryList[0],
+  ),
+  Room(
+    id: 13,
+    name: 'Room As21',
+    price: '12',
+    imagePath: 'assets/rooms/ch13.jpeg',
+    description:
+        'Book your stay today and experience the magic of this one-of-a-kind suite',
+    distance: '4.3 km',
+    rating: 5,
+    reviews: '77',
+    category: CategoryList[2],
+  ),
+];
