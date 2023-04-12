@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:kof_hotel/screens/welcome_screen.dart';
 
 import 'screens/screens.dart';
 
-void main() {
-  runApp(MyApp());
-}
+void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
   MyApp({super.key});
@@ -23,16 +22,15 @@ class MyApp extends StatelessWidget {
   });
   @override
   Widget build(BuildContext context) {
-   
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'KOFHOTEL',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: primaryColor,
         fontFamily: 'MyFont',
         brightness: Brightness.light,
       ),
-      home: HomeScreen(),
+      home: WelcomeScreen(),
     );
   }
 }

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 class ReviewersAvatarWidget extends StatefulWidget {
-  const ReviewersAvatarWidget({super.key});
-
+  const ReviewersAvatarWidget({this.color = Colors.white, super.key});
+  final Color color;
   @override
   State<ReviewersAvatarWidget> createState() => _ReviewersAvatarWidgetState();
 }
@@ -14,7 +14,8 @@ class _ReviewersAvatarWidgetState extends State<ReviewersAvatarWidget> {
       'assets/users/sr.jpg',
       'assets/users/si.jpg',
       'assets/users/al.jpg',
-      'assets/users/jl.jpg'
+      'assets/users/jl.jpg',
+      'assets/users/sr.jpg',
     ];
     return Stack(
       children: [
@@ -22,14 +23,14 @@ class _ReviewersAvatarWidgetState extends State<ReviewersAvatarWidget> {
           height: MediaQuery.of(context).size.height * 0.052,
           width: MediaQuery.of(context).size.width * 0.5,
         ),
-        for (var i = 0; i < 5; i++)
-          if (i == 4)
+        for (var i = 0; i < 6; i++)
+          if (i == 5)
             Positioned(
               left: i * 22,
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(45),
                 child: Container(
-                  color: Colors.white,
+                  color: widget.color,
                   child: Padding(
                     padding: const EdgeInsets.all(3.0),
                     child: CircleAvatar(
@@ -53,7 +54,7 @@ class _ReviewersAvatarWidgetState extends State<ReviewersAvatarWidget> {
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(45),
                 child: Container(
-                  color: Colors.white,
+                  color: widget.color,
                   child: Padding(
                     padding: const EdgeInsets.all(3.0),
                     child: CircleAvatar(

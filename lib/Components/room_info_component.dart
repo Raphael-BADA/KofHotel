@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kof_hotel/screens/detail_screen.dart';
 import 'package:kof_hotel/widgets/widgets.dart';
 
 import '../colors.dart';
@@ -30,9 +31,19 @@ class _RoomInfoComponentState extends State<RoomInfoComponent> {
                   width: MediaQuery.of(context).size.width * 0.25,
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(30),
-                    child: Image(
-                      fit: BoxFit.cover,
-                      image: AssetImage(widget.room.imagePath),
+                    child: InkWell(
+                      onTap: () {
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: ((context) =>
+                                DetailScreen(id: widget.room.id)),
+                          ),
+                        );
+                      },
+                      child: Image(
+                        fit: BoxFit.cover,
+                        image: AssetImage(widget.room.imagePath),
+                      ),
                     ),
                   ),
                 ),

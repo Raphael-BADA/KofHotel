@@ -27,10 +27,13 @@ class _HeaderState extends State<Header> {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 10.0),
             child: ListTile(
-              leading: Icon(
-                Icons.arrow_back_ios,
-                color: Colors.white,
-                size: 30,
+              leading: InkWell(
+                onTap: Navigator.of(context).pop,
+                child: Icon(
+                  Icons.arrow_back_ios,
+                  color: Colors.white,
+                  size: 30,
+                ),
               ),
               trailing: ClipRRect(
                 borderRadius: BorderRadius.circular(15),
