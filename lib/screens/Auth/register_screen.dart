@@ -8,6 +8,7 @@ import 'package:kof_hotel/screens/Auth/register_screen.dart';
 import 'package:kof_hotel/screens/home_screen.dart';
 
 import '../../colors.dart';
+import 'auth_methods.dart';
 import 'login_screen.dart';
 
 class RegisterScreen extends StatefulWidget {
@@ -18,6 +19,11 @@ class RegisterScreen extends StatefulWidget {
 }
 
 class _RegisterScreenState extends State<RegisterScreen> {
+  final _formKey = GlobalKey<FormState>();
+  final TextEditingController _emailController = new TextEditingController();
+  final TextEditingController _passwordController = new TextEditingController();
+  final TextEditingController _nameController = new TextEditingController();
+  bool _isLoading = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -118,6 +124,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       child: Padding(
                         padding: const EdgeInsets.all(2.0),
                         child: TextField(
+                          controller: _nameController,
                           decoration: InputDecoration(
                               border: InputBorder.none,
                               hintText: 'Enter your name here'),
@@ -137,6 +144,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       child: Padding(
                         padding: const EdgeInsets.all(2.0),
                         child: TextField(
+                          controller: _emailController,
                           decoration: InputDecoration(
                               border: InputBorder.none,
                               hintText: 'Enter your email here'),
@@ -156,6 +164,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       child: Padding(
                         padding: const EdgeInsets.all(2.0),
                         child: TextField(
+                          controller: _passwordController,
                           decoration: InputDecoration(
                               border: InputBorder.none,
                               hintText: 'Enter your password here'),
@@ -172,19 +181,20 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       ),
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),
-                        child: InkWell(
-                          onTap: () {
-                            Navigator.of(context).push(
-                              MaterialPageRoute(
-                                builder: ((context) => HomeScreen()),
+                        child: _isLoading == false
+                            ? InkWell(
+                                onTap: () {
+                                  _signUp();
+                                },
+                                child: Text(
+                                  'REGISTER',
+                                  style: TextStyle(
+                                      color: Colors.white, fontSize: 30),
+                                ),
+                              )
+                            : CircularProgressIndicator(
+                                backgroundColor: Colors.white,
                               ),
-                            );
-                          },
-                          child: Text(
-                            'REGISTER',
-                            style: TextStyle(color: Colors.white, fontSize: 30),
-                          ),
-                        ),
                       ),
                     ),
                     Padding(
@@ -292,5 +302,28 @@ class _RegisterScreenState extends State<RegisterScreen> {
           Icon(BoxIcons.bxl_apple),
           Icon(EvaIcons.twitter),
           Icon(EvaIcons.facebook), */
+  }
+
+  void _signUp() async {
+    setState(() {
+      _isLoading = true;
+    });
+    // Logging in the user w/ Firebase
+    String result = await AuthMethods().signUpUser(
+      name: _nameController.text,
+      email: _emailController.text,
+      password: _passwordController.text,
+    );
+    if (result != 'success') {
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        content: Text(result),
+      ));
+    } else {
+      Navigator.push(
+          context, MaterialPageRoute(builder: (context) => HomeScreen()));
+    }
+    setState(() {
+      _isLoading = false;
+    });
   }
 }

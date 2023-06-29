@@ -1,5 +1,6 @@
 import 'package:blurrycontainer/blurrycontainer.dart';
 import 'package:flutter/material.dart';
+//import 'package:sweetalert/sweetalert.dart';
 
 import '../colors.dart';
 import '../data/data.dart';
@@ -143,12 +144,11 @@ class _PaymentScreenState extends State<PaymentScreen> {
                     padding: const EdgeInsets.symmetric(vertical: 12.0),
                     child: InkWell(
                       onTap: () {
-                        Navigator.of(context).push(
-                          MaterialPageRoute(
-                            builder: ((context) =>
-                                PaymentScreen(room: widget.room)),
-                          ),
-                        );
+                        print('cool');
+                        /*  SweetAlert.show(context,
+                            title: "Just show a message",
+                            subtitle: "Sweet alert is pretty",
+                            style: SweetAlertStyle.success); */
                       },
                       child: Text(
                         'PAY NOW',

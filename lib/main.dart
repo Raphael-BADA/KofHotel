@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+import 'package:kof_hotel/screens/screens.dart';
 import 'package:kof_hotel/screens/welcome_screen.dart';
-
-import 'screens/screens.dart';
-
-void main() => runApp(MyApp());
+import 'package:firebase_core/firebase_core.dart';
+void main() {
+ /*  WidgetsFlutterBinding.ensureInitialized();
+  Firebase.initializeApp(); */
+  runApp(MyApp());
+}
 
 class MyApp extends StatelessWidget {
   MyApp({super.key});
@@ -30,7 +32,7 @@ class MyApp extends StatelessWidget {
         fontFamily: 'MyFont',
         brightness: Brightness.light,
       ),
-      home: WelcomeScreen(),
+      home: HomeScreen(),
     );
   }
 }

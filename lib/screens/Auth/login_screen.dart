@@ -8,6 +8,7 @@ import 'package:kof_hotel/screens/Auth/register_screen.dart';
 import 'package:kof_hotel/screens/home_screen.dart';
 
 import '../../colors.dart';
+import 'auth_methods.dart';
 
 class LoginScreen extends StatefulWidget {
   LoginScreen({Key? key}) : super(key: key);
@@ -17,6 +18,9 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  final TextEditingController _emailController = new TextEditingController();
+  final TextEditingController _passwordController = new TextEditingController();
+  bool _isLoading = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -118,6 +122,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         child: Padding(
                           padding: const EdgeInsets.all(2.0),
                           child: TextField(
+                            controller: _emailController,
                             decoration: InputDecoration(
                                 border: InputBorder.none,
                                 hintText: 'Enter your email here'),
@@ -137,6 +142,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         child: Padding(
                           padding: const EdgeInsets.all(2.0),
                           child: TextField(
+                            controller: _passwordController,
                             decoration: InputDecoration(
                                 border: InputBorder.none,
                                 hintText: 'Enter your password here'),
@@ -153,20 +159,20 @@ class _LoginScreenState extends State<LoginScreen> {
                         ),
                         child: Padding(
                           padding: const EdgeInsets.all(8.0),
-                          child: InkWell(
-                            onTap: () {
-                              Navigator.of(context).push(
-                                MaterialPageRoute(
-                                  builder: ((context) => HomeScreen()),
+                          child: _isLoading == false
+                              ? InkWell(
+                                  onTap: () {
+                                    _logInUser();
+                                  },
+                                  child: Text(
+                                    'LOGIN',
+                                    style: TextStyle(
+                                        color: Colors.white, fontSize: 30),
+                                  ),
+                                )
+                              : CircularProgressIndicator(
+                                  backgroundColor: Colors.white,
                                 ),
-                              );
-                            },
-                            child: Text(
-                              'LOGIN',
-                              style:
-                                  TextStyle(color: Colors.white, fontSize: 30),
-                            ),
-                          ),
                         ),
                       ),
                       Padding(
@@ -272,10 +278,35 @@ class _LoginScreenState extends State<LoginScreen> {
         ],
       ),
     );
+  }
 
-    /*     Icon(BoxIcons.bxl_google),
-          Icon(BoxIcons.bxl_apple),
-          Icon(EvaIcons.twitter),
-          Icon(EvaIcons.facebook), */
+  void _logInUser() async {
+    /*   if (_emailIdController.text.isEmpty) {
+      _showEmptyDialog("Type something");
+    } else if (_passwordController.text.isEmpty) {
+      _showEmptyDialog("Type something");
+    } */
+    setState(() {
+      _isLoading = true;
+    });
+    String result = await AuthMethods().logInUser(
+      email: _emailController.text,
+      password: _passwordController.text,
+    );
+    if (result == 'success') {
+      Navigator.push(
+          context, MaterialPageRoute(builder: (context) => HomeScreen()));
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        backgroundColor: Colors.red,
+        content: Text(
+          'Incorrect email or password. Please try again',
+          style: TextStyle(color: Colors.white),
+        ),
+      ));
+    }
+    setState(() {
+      _isLoading = false;
+    });
   }
 }
